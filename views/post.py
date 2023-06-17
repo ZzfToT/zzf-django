@@ -11,8 +11,8 @@ def index(request):
         print("query_content", query_post_title)
         post = Post.objects.get(title=query_post_title)
         if post:
-            #with open (os.path.join(path, post.mdfile), mode="r", encoding="utf-8") as rf:
-            content = post.mdfile
+            with open (os.path.join(path, post.mdfile), mode="r", encoding="utf-8") as rf:
+                content = rf.read()
             obj = {
                     "status_code": 200,
                     "title" : post.title,
