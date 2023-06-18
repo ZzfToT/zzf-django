@@ -17,7 +17,7 @@ def index(request):
                 "status_code": 200,
                 "title" : post.title,
                 "date": post.create_date,
-                "categories":post.categories,
+                "category":post.category,
                 "tags":post.tags,
                 "content":content,
                 }

@@ -5,8 +5,8 @@ from myapp.models.post import Post
 
 def index(request):
     try:
-        postlist = Post.objects.all().order_by("-create_date")
-        postlist = [ {"title": item.title, "time": item.create_date} for item in postlist]
+        postlist = Post.objects.values("title", "create_date").order_by("-create_date")[:6]
+        postlist = list(postlist)
         return JsonResponse({
             "status_code": 200,
             "postlist": postlist
