@@ -9,7 +9,6 @@ path = "/home/zzf/markdown"
 def index(request):
     try:
         query_post_title = request.GET.get('title')
-        print("query_content", query_post_title)
         post = Post.objects.get(title=query_post_title)
         with open (os.path.join(path, post.mdfile), mode="r", encoding="utf-8") as rf:
             content = rf.read()
