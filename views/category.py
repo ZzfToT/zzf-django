@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import json
 from myapp.models import Post
 
@@ -7,9 +7,7 @@ def index(request):
         query_category = request.GET.get("category")
         postlist = Post.objects.filter(category__iexact=query_category).values("title", "create_date").order_by("-create_date")
         if len(postlist) == 0:
-            return JsonResponse({
-                "status_code": 404
-                })
+            return HttpResponse(status=404)
         post_time_dict = {}
         for post in postlist:
             year = post["create_date"].year
@@ -22,8 +20,6 @@ def index(request):
             "status_code": 200,
             "postTimeDict": post_time_dict
             })
-    except Exception:
-        return JsonResponse({
-            "status_code": 200
-            })
 
+    except Exception:
+        return HttpResponse(status=500)

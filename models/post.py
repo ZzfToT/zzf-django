@@ -5,7 +5,7 @@ class Post(models.Model):
     create_date = models.DateTimeField("date created")
     category = models.CharField(max_length=32, default="")
     tags = models.JSONField(null=True);
-    mdfile = models.FilePathField(path="/home/zzf/markdown", match=".*\.md$");
+    content = models.TextField(default="")
 
     def __str__(self):
         return self.title

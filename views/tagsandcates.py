@@ -1,5 +1,4 @@
-from django.http import JsonResponse
-import json
+from django.http import JsonResponse, HttpResponse
 from myapp.models.post import Post
 
 def index(request):
@@ -22,6 +21,4 @@ def index(request):
             })
 
     except Exception:
-        return JsonResponse({
-            "status_code": 500
-            })
+        return HttpResponse(status=500)
