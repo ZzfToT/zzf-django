@@ -8,6 +8,6 @@ urlpatterns = [
         path('postlistall/', postlist_all.index, name="postlist_all_idnex"),
         path('category/', category.index, name="category_index"),
         path('tag/', tag.index, name="tag_index"),
-        re_path('.*/', homepage.index, name="homepage_index")
+        re_path('.*', homepage.index, name="homepage_index")
 ]
 
